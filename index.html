@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大阪万博 2025 アーカイブ — ソーラーループ防災灯</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=DM+Mono:wght@400;500&family=Barlow+Condensed:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:    #1a1814;
+    --paper:  #f5f2ec;
+    --warm:   #f0ebe0;
+    --accent: #c8511a;
+    --gold:   #b8902a;
+    --teal:   #1a6b55;
+    --teal-lt:#e2f0ea;
+    --rule:   rgba(26,24,20,.12);
+    --mono:   'DM Mono', monospace;
+    --serif:  'Noto Serif JP', serif;
+    --cond:   'Barlow Condensed', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 300;
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    height: 52px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(255,255,255,.5);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,.45);
+    text-decoration: none;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    background: var(--ink);
+    padding: 5rem 3.5rem 4rem;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative;
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 39px,
+      rgba(255,255,255,.025) 39px, rgba(255,255,255,.025) 40px
+    );
+    pointer-events: none;
+  }
+  .expo-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: .75rem;
+  }
+  .expo-tag::before {
+    content: '';
+    display: block; width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  .hero-h1 {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: .92;
+    color: #fff;
+    letter-spacing: -.01em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 14px;
+    color: rgba(255,255,255,.5);
+    max-width: 320px;
+    line-height: 1.9;
+  }
+  .hero-badges {
+    display: flex; gap: .5rem; flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+  .badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border: 1px solid rgba(255,255,255,.2);
+    color: rgba(255,255,255,.6);
+    border-radius: 2px;
+  }
+  .badge.accent { border-color: var(--accent); color: var(--accent); }
+  .badge.teal   { border-color: #3db88a;        color: #3db88a; }
+
+  .hero-right {
+    background: var(--warm);
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 4rem 3rem 3rem;
+    position: relative;
+    border-left: 1px solid var(--rule);
+  }
+  .hero-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    align-self: center;
+  }
+  .h-stat {
+    background: var(--warm);
+    padding: 2rem 1.75rem;
+    position: relative;
+  }
+  .h-stat-num {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 3.8rem;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -.02em;
+  }
+  .h-stat-num.accent { color: var(--accent); }
+  .h-stat-num.teal   { color: var(--teal); }
+  .h-stat-unit {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(26,24,20,.45);
+    letter-spacing: .08em;
+    margin-top: .35rem;
+    text-transform: uppercase;
+  }
+  .hero-caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(26,24,20,.4);
+    letter-spacing: .06em;
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  section { padding: 5rem 0; border-bottom: 1px solid var(--rule); }
+  .container { max-width: 1020px; margin: 0 auto; padding: 0 2.5rem; }
+  .sec-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: rgba(26,24,20,.35);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: .75rem;
+  }
+  .sec-eyebrow::before {
+    content: attr(data-n);
+    font-size: 10px;
+    color: var(--accent);
+  }
+  .sec-h2 {
+    font-family: var(--cond);
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.15;
+    letter-spacing: -.01em;
+    margin-bottom: 1rem;
+  }
+  .sec-lead {
+    font-size: 14px;
+    color: rgba(26,24,20,.6);
+    max-width: 560px;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 6px; bottom: 0;
+    width: 1px; background: var(--rule);
+  }
+  .tl-item {
+    position: relative;
+    padding: 0 0 2.5rem 2rem;
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .tl-item.visible { opacity: 1; transform: translateX(0); }
+  .tl-dot {
+    position: absolute; left: -2rem;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--warm); border: 2px solid var(--rule);
+    top: 5px; transform: translateX(-50%);
+    margin-left: 1px;
+  }
+  .tl-dot.active { background: var(--accent); border-color: var(--accent); }
+  .tl-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: .1em;
+    margin-bottom: .4rem;
+  }
+  .tl-title {
+    font-family: var(--cond);
+    font-weight: 500;
+    font-size: 1.15rem;
+    margin-bottom: .35rem;
+  }
+  .tl-body { font-size: 13.5px; color: rgba(26,24,20,.65); max-width: 520px; }
+
+  /* ── PHOTO GRID ── */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 3px;
+  }
+  .photo-ph {
+    background: rgba(26,24,20,.06);
+    border: 1px solid var(--rule);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: .5rem;
+    color: rgba(26,24,20,.3);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .photo-ph svg { opacity: .3; }
+  .photo-ph:first-child { grid-row: span 2; min-height: 320px; }
+  .photo-ph:not(:first-child) { min-height: 155px; }
+  .photo-caption {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(26,24,20,.4);
+    margin-top: .75rem;
+    letter-spacing: .05em;
+  }
+
+  /* ── DATA CARDS ── */
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .data-card {
+    background: var(--paper);
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .data-card::before {
+    content: attr(data-icon);
+    position: absolute;
+    right: 1.25rem; top: 1.25rem;
+    font-size: 1.4rem;
+    opacity: .15;
+  }
+  .data-card-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba(26,24,20,.4);
+    margin-bottom: .6rem;
+  }
+  .data-card-title {
+    font-family: var(--cond);
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: .4rem;
+  }
+  .data-card-body { font-size: 12.5px; color: rgba(26,24,20,.6); line-height: 1.7; }
+
+  /* ── MEDIA MENTIONS ── */
+  .media-list { display: flex; flex-direction: column; gap: 0; }
+  .media-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule);
+    opacity: 0; transform: translateY(8px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  .media-item.visible { opacity: 1; transform: translateY(0); }
+  .media-source {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(26,24,20,.4);
+  }
+  .media-headline {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .media-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(26,24,20,.35);
+    white-space: nowrap;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--ink);
+    padding: 6rem 0;
+    text-align: center;
+  }
+  .cta-section .sec-eyebrow { justify-content: center; color: rgba(255,255,255,.3); }
+  .cta-section .sec-eyebrow::before { color: var(--accent); }
+  .cta-h2 {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+  .cta-sub { font-size: 14px; color: rgba(255,255,255,.45); margin-bottom: 2.5rem; }
+  .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .85rem 2rem;
+    border: 1px solid rgba(255,255,255,.25);
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background .2s, border-color .2s, color .2s;
+  }
+  .btn:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { background: #b0440f; border-color: #b0440f; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding: 2rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer p {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(255,255,255,.25);
+    letter-spacing: .06em;
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 3rem 1.5rem 2.5rem; min-height: 60vh; justify-content: flex-end; }
+    .hero-right { padding: 2rem 1.5rem; }
+    .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+    .h-stat-num { font-size: 2.8rem; }
+    .data-grid { grid-template-columns: 1fr; }
+    .media-item { grid-template-columns: 1fr; gap: .4rem; }
+    .media-date { display: none; }
+    .photo-grid { grid-template-columns: 1fr 1fr; }
+    .photo-ph:first-child { grid-column: span 2; grid-row: auto; }
+    nav .nav-links { display: none; }
+    .container { padding: 0 1.25rem; }
+    section { padding: 3.5rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Solar<span>Loop</span> — Archive</div>
+  <div class="nav-links">
+    <a href="#timeline">タイムライン</a>
+    <a href="#gallery">ギャラリー</a>
+    <a href="#data">検証データ</a>
+    <a href="#media">メディア</a>
+    <a href="#contact">お問い合わせ</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="expo-tag">大阪・関西万博 2025 公式採用記録</div>
+    <h1 class="hero-h1">消えない光、<br><em>184日。</em></h1>
+    <p class="hero-sub">夢洲桟橋に9基設置された「ソーラーループ防災灯」は、会期全日程・夜間連続点灯を100%太陽光エネルギーのみで達成しました。</p>
+    <div class="hero-badges">
+      <span class="badge accent">EXPO 2025 公式採用</span>
+      <span class="badge teal">100% 再生可能エネルギー</span>
+      <span class="badge">配線工事不要</span>
+      <span class="badge">CO₂排出ゼロ</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-grid">
+      <div class="h-stat">
+        <div class="h-stat-num accent">184</div>
+        <div class="h-stat-unit">日間連続点灯</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">9</div>
+        <div class="h-stat-unit">基設置（夢洲桟橋）</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num teal">0</div>
+        <div class="h-stat-unit">回 消灯トラブル</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-num">100%</div>
+        <div class="h-stat-unit">太陽光エネルギー</div>
+      </div>
+    </div>
+    <div class="hero-caption">2025.04.13 — 2025.10.13 &nbsp;｜&nbsp; 大阪市此花区夢洲 桟橋</div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <div class="sec-eyebrow" data-n="01">会期タイムライン</div>
+    <h2 class="sec-h2 reveal">開幕から閉幕まで、<br>一度も消えなかった。</h2>
+    <p class="sec-lead reveal">184日間の会期中、天候に関わらず毎夜点灯を続けた記録をご覧ください。</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot active"></div>
+        <div class="tl-date">2025年4月13日</div>
+        <div class="tl-title">大阪・関西万博 開幕</div>
+        <div class="tl-body">夢洲桟橋にソーラーループ9基が設置完了。開幕日の夜から点灯を開始。商用電源への接続なし、地中配線工事なしで即日稼働。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">会期中（梅雨・夏季）</div>
+        <div class="tl-title">連続降雨・猛暑下での稼働継続</div>
+        <div class="tl-body">大阪の梅雨期・連続曇天時にも蓄電池の光循環機能が作動し、夜間照明を無停電で維持。来場者・会場スタッフから「いつも光っている」と評価。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">会期中（台風接近時）</div>
+        <div class="tl-title">強風・塩害環境での耐久確認</div>
+        <div class="tl-body">大阪湾に面した夢洲は潮風・強風の厳しい環境。過去の実証（沖縄・風速55m耐風）通り、万博会期中も構造的損傷なしで稼働継続。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot active"></div>
+        <div class="tl-date">2025年10月13日</div>
+        <div class="tl-title">大阪・関西万博 閉幕</div>
+        <div class="tl-body">184日間・1度のトラブルなく完全達成。設置9基すべてが正常稼働状態のまま会期を終了。「世界初・万博での太陽光防災灯実証」として記録に残る。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="background: var(--warm);">
+  <div class="container">
+    <div class="sec-eyebrow" data-n="02">設置写真ギャラリー</div>
+    <h2 class="sec-h2 reveal">夢洲桟橋の現場記録</h2>
+    <p class="sec-lead reveal">設置工事から夜間点灯まで、現場の様子をご覧いただけます。（実際の写真はご提供素材に差し替えてください）</p>
+    <div class="photo-grid reveal">
+      <div class="photo-ph">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><circle cx="12" cy="14" r="3"/></svg>
+        夜間点灯 — メイン
+      </div>
+      <div class="photo-ph">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><circle cx="12" cy="14" r="3"/></svg>
+        設置工事中
+      </div>
+      <div class="photo-ph">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><circle cx="12" cy="14" r="3"/></svg>
+        桟橋全景
+      </div>
+      <div class="photo-ph">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><circle cx="12" cy="14" r="3"/></svg>
+        パネル拡大
+      </div>
+      <div class="photo-ph">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><circle cx="12" cy="14" r="3"/></svg>
+        開幕式夜
+      </div>
+    </div>
+    <p class="photo-caption reveal">9基設置 ｜ 高さ 3.5m ｜ 重量 110kg ｜ 夢洲桟橋（2025年4月撮影）</p>
+  </div>
+</section>
+
+<!-- TECH DATA -->
+<section id="data">
+  <div class="container">
+    <div class="sec-eyebrow" data-n="03">技術検証データ</div>
+    <h2 class="sec-h2 reveal">数字が証明する、<br>信頼性。</h2>
+    <p class="sec-lead reveal">184日間の稼働で取得した実測データをまとめました。導入検討・稟議資料にご活用ください。</p>
+    <div class="data-grid reveal">
+      <div class="data-card" data-icon="☀">
+        <div class="data-card-label">発電 &amp; 蓄電</div>
+        <div class="data-card-title">光循環システムの発電量記録</div>
+        <div class="data-card-body">日中の太陽光発電 + 夜間のLED反射光による二次発電量を記録。蓄電池の充放電サイクルを最適化するMPPT制御により、最大効率を維持。</div>
+      </div>
+      <div class="data-card" data-icon="🌧">
+        <div class="data-card-label">悪天候耐性</div>
+        <div class="data-card-title">連続曇天時のバッテリー残量推移</div>
+        <div class="data-card-body">大阪梅雨期（連続5日間曇天）でも夜間点灯を維持。蓄電容量の設計余裕と光循環による補充電が安定稼働の鍵。消灯トラブル回数：0回。</div>
+      </div>
+      <div class="data-card" data-icon="🌿">
+        <div class="data-card-label">環境負荷</div>
+        <div class="data-card-title">CO₂ 削減量の試算（9基・184日）</div>
+        <div class="data-card-body">従来の商用電源接続型街路灯と比較した場合のCO₂排出削減量。化石燃料消費ゼロ・系統電力使用ゼロを実現。環境報告書への記載可能データを提供。</div>
+      </div>
+      <div class="data-card" data-icon="💨">
+        <div class="data-card-label">耐久性</div>
+        <div class="data-card-title">防水・耐風・塩害性能の実地確認</div>
+        <div class="data-card-body">大阪湾沿岸という過酷な海洋環境で6ヶ月の連続稼働を達成。過去の実証実験（沖縄台風6号・風速55m）と合わせ、防災灯としての信頼性を確立。</div>
+      </div>
+    </div>
+    <div style="margin-top: 1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+      <a href="#contact" class="btn primary">詳細レポートを請求する</a>
+      <a href="#contact" class="btn">PDF資料をダウンロード</a>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section id="media" style="background: var(--warm);">
+  <div class="container">
+    <div class="sec-eyebrow" data-n="04">メディア掲載実績</div>
+    <h2 class="sec-h2 reveal">外部評価・報道記録</h2>
+    <p class="sec-lead reveal">万博への採用・実証実績は各メディアで取り上げられています。</p>
+    <div class="media-list">
+      <div class="media-item">
+        <div class="media-source">東愛知新聞</div>
+        <div class="media-headline">会場にエコ街路灯、豊橋の「ライトプラン」が共同開発 — 自ら発した光を再利用する「光循環街灯」</div>
+        <div class="media-date">2025年4月</div>
+      </div>
+      <div class="media-item">
+        <div class="media-source">全国郷土紙連合</div>
+        <div class="media-headline">万博を照らすエコ街路灯 豊橋「ライトプラン」が共同開発 — 夢洲桟橋に9基設置</div>
+        <div class="media-date">2025年4月</div>
+      </div>
+      <div class="media-item">
+        <div class="media-source">EXPO 2025 公式記録</div>
+        <div class="media-headline">夢洲桟橋設置 ソーラー街路灯ループ — グリーン万博 未来社会ショーケース事業</div>
+        <div class="media-date">2025年4〜10月</div>
+      </div>
+      <div class="media-item" style="border-bottom:none;">
+        <div class="media-source">掲載実績</div>
+        <div class="media-headline" style="color:rgba(26,24,20,.35); font-style:italic;">随時更新中 — 新たな掲載があり次第追記します</div>
+        <div class="media-date"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="sec-eyebrow" data-n="05">次のステップ</div>
+    <h2 class="cta-h2">この実績を、<br>貴組織の現場へ。</h2>
+    <p class="cta-sub">自治体・企業・商業施設への導入相談・見積もりは無料です。<br>カタログPDFのダウンロードもご利用いただけます。</p>
+    <div class="btn-group">
+      <a href="mailto:info@lightplan.example.jp" class="btn primary">導入・見積もりを相談する</a>
+      <a href="#" class="btn">カタログPDF をダウンロード</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 有限会社ライトプラン ／ 久米電機 &nbsp;｜&nbsp; ソーラー街路灯ループ</p>
+  <p>大阪・関西万博 2025 夢洲桟橋 公式採用</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .tl-item, .media-item').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.08 + 's';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
